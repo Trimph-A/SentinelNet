@@ -5,3 +5,4 @@ web3  # For blockchain integration
 flask
 fastapi
 uvicorn
+pyshark
