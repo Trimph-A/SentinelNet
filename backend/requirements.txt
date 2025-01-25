@@ -3,4 +3,5 @@ pandas  # For data preprocessing
 transformers  # For LLaMa model (Hugging Face)
 web3  # For blockchain integration
 flask
-
+fastapi
+uvicorn
