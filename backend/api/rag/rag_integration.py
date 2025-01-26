@@ -5,7 +5,7 @@ from config import load_config
 
 
 class RAGHandler:
-    def __init__(self):
+    def __init__(self, dataset_path="dataset.json"):
         """Initializes the RAGHandler with FAISS index and OpenAI client configuration."""
         config = load_config("config/config.yaml")
         self.index = faiss.IndexFlatL2(768)  # Dimensionality of the embeddings
@@ -15,6 +15,19 @@ class RAGHandler:
             api_key=config["api"]["aimlapi_key"],
             base_url=config["api"]["aimlapi_base_url"],
         )
+        self.load_dataset(dataset_path)
+
+    def load_dataset(self, dataset_path: str):
+        """Loads dataset from a JSON file and indexes it."""
+        try:
+            with open(dataset_path, "r") as file:
+                logs = json.load(file)
+                if not isinstance(logs, list):
+                    raise ValueError("Dataset must be a list of log entries.")
+                self.add_to_index(logs)
+                print(f"Loaded and indexed {len(logs)} logs from {dataset_path}.")
+        except Exception as e:
+            raise RuntimeError(f"Error loading dataset: {str(e)}")
 
     def add_to_index(self, logs: list):
         """Generates embeddings and adds logs to the FAISS index."""

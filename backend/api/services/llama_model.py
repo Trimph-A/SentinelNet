@@ -1,7 +1,7 @@
 from typing import List
 from api.models.traffic import TrafficData
 from api.models.notifications import AnomalyNotification
-from RAG.rag_integration import RAGHandler
+from rag.rag_integration import RAGHandler
 
 
 class LlamaModel:
