@@ -14,7 +14,7 @@ import {
 // Mock data - replace with actual API integration
 const mockNotifications = [
   {
-    id: 1,
+    id: 1,  
     eventType: 'Anomaly',
     description: 'Unusual traffic spike detected',
     timestamp: '2024-01-25 14:30:45',
