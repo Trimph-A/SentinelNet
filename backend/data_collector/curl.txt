@@ -1,0 +1,31 @@
+curl -X POST http://localhost:8080/api/v1/network_traffic \
+-H "Content-Type: application/json" \
+-d '[
+  {
+    "source_ip": "192.168.0.101",
+    "destination_ip": "10.0.0.1",
+    "source_port": 44321,
+    "destination_port": 80,
+    "protocol": "TCP",
+    "data_transferred": 2048,
+    "timestamp": "2025-01-25T12:00:00Z"
+  },
+  {
+    "source_ip": "192.168.0.102",
+    "destination_ip": "8.8.8.8",
+    "source_port": 12345,
+    "destination_port": 53,
+    "protocol": "UDP",
+    "data_transferred": 512,
+    "timestamp": "2025-01-25T12:01:00Z"
+  },
+  {
+    "source_ip": "192.168.0.103",
+    "destination_ip": "172.16.0.5",
+    "source_port": 3389,
+    "destination_port": 3389,
+    "protocol": "TCP",
+    "data_transferred": 4096,
+    "timestamp": "2025-01-25T12:02:00Z"
+  }
+]'

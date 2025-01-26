@@ -1,0 +1,70 @@
+[
+    {
+      "input": "router dhcpd: DHCPDISCOVER from aa:bb:cc:dd:ee:ff via eth0",
+      "output": "normal"
+    },
+    {
+      "input": "router kernel: DROP IN=eth0 OUT= MAC=aa:bb:cc:dd:ee:ff:00:11:22:33:44:55:66:77:88:99:aa:bb:cc:dd:ee:ff:08:00 SRC=10.0.0.100 DST=192.168.1.10 LEN=40 TOS=0x00 PREC=0x00 TTL=255 ID=54321 DF PROTO=TCP SPT=54321 DPT=80 WINDOW=8192 RES=0x00 SYN URGP=0",
+      "output": "attack: Attempted TCP connection from an unknown IP address"
+    },
+    {
+      "input": "router sshd[1234]: Failed password for invalid user root from 10.0.0.100 port 54321 ssh2",
+      "output": "attack: SSH login attempt from an unknown IP address"
+    },
+    {
+      "input": "router kernel: UDP flood detected from 10.0.0.100",
+      "output": "attack: UDP flood attack detected"
+    },
+    {
+      "input": "router system: High CPU usage detected",
+      "output": "failure: Possible router overload"
+    },
+    {
+      "input": "router dnsmasq[1234]: no reply from upstream server for A www.google.com",
+      "output": "failure: DNS resolution failure"
+    },
+    {
+      "input": "router kernel: ICMP echo reply from 192.168.1.10 to 192.168.1.11",
+      "output": "normal"
+    },
+    {
+      "input": "router pppoe: PPPoE connection established",
+      "output": "normal"
+    },
+    {
+      "input": "router firewall: Blocked incoming TCP connection from 10.0.0.100 to 192.168.1.10:80",
+      "output": "attack: Blocked TCP connection attempt"
+    },
+    {
+      "input": "router system: Memory usage is high",
+      "output": "failure: Possible memory leak"
+    },
+    {
+      "input": "router kernel: TCP RST packet from 10.0.0.100 to 192.168.1.10:80",
+      "output": "attack: Possible TCP reset attack"
+    },
+    {
+      "input": "router dhcpd: DHCPREQUEST for 192.168.1.11 from aa:bb:cc:dd:ee:ff via eth0",
+      "output": "normal"
+    },
+    {
+      "input": "router ntpd: synchronized to time server 1.2.3.4",
+      "output": "normal"
+    },
+    {
+      "input": "router firewall: Allowed incoming TCP connection from 192.168.1.11 to 192.168.1.10:8080",
+      "output": "normal"
+    },
+    {
+      "input": "router system: Wireless client aa:bb:cc:dd:ee:ff associated to WLAN",
+      "output": "normal"
+    },
+    {
+      "input": "router kernel: ARP, Request who-has 192.168.1.11 tell 192.168.1.10, length 46",
+      "output": "normal"
+    },
+    {
+      "input": "router kernel: ARP, Reply 192.168.1.11 is-at aa:bb:cc:dd:ee:ff, length 28",
+      "output": "normal"
+    }
+  ]
