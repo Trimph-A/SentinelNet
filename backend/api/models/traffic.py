@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from datetime import datetime
 
 class TrafficData(BaseModel):
     source_ip: str
@@ -8,5 +7,4 @@ class TrafficData(BaseModel):
     destination_port: int
     protocol: str
     data_transferred: int
-    timestamp: datetime
-
+    timestamp: str
