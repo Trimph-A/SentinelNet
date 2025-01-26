@@ -152,7 +152,7 @@ const MonitoringDashboard = () => {
               />
             </div>
             <div className="relative">
-              <select 
+              <select   
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
                 className="w-full p-2 border rounded-md appearance-none pr-8 focus:ring-2 focus:ring-blue-500 transition"
