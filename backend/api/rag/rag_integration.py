@@ -47,7 +47,7 @@ class RAGHandler:
         """Uses the Llama model via RAG to analyze network traffic logs."""
         try:
             response = self.client.chat.completions.create(
-                model="meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
+                model="meta-llama/Meta-Llama-3.2-405B-Instruct-Turbo",
                 messages=[
                     {
                         "role": "system",

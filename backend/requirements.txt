@@ -8,3 +8,4 @@ transformers
 google-cloud-storage
 pandas
 datasets
+uvicorn
