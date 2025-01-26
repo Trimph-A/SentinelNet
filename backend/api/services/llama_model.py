@@ -1,8 +1,8 @@
 from typing import List
-from datetime import datetime
 from api.models.traffic import TrafficData
 from api.models.notifications import AnomalyNotification
 from RAG.rag_integration import RAGHandler
+
 
 class LlamaModel:
     def __init__(self, rag_handler: RAGHandler):
@@ -25,12 +25,11 @@ class LlamaModel:
 
     def _generate_prompt(self, traffic_logs: List[TrafficData]) -> str:
         """Generate a structured prompt for the Llama model."""
-        prompt = "Analyze the following network traffic logs and identify vulnerabilities or anomalies. Respond with a structured JSON format."\
-                 " Logs: \n"
+        prompt = "Analyze the following network traffic logs and identify vulnerabilities or anomalies. Respond with a structured JSON format.\nLogs:\n"
         for log in traffic_logs:
-            prompt += f"- Source IP: {log.source_ip}, Destination IP: {log.destination_ip}, " \
-                     f"Source Port: {log.source_port}, Destination Port: {log.destination_port}, Protocol: {log.protocol}, " \
-                     f"Data Transferred: {log.data_transferred}, Timestamp: {log.timestamp}\n"
+            prompt += f"- Source IP: {log.src_ip}, Destination IP: {log.dst_ip}, " \
+                      f"Source Port: {log.src_port}, Destination Port: {log.dst_port}, Protocol: {log.protocol}, " \
+                      f"Data Transferred: {log.data_length}, Timestamp: {log.time_diff}, Label: {log.label}\n"
         return prompt
 
     def _parse_response(self, response: dict) -> List[AnomalyNotification]:
@@ -39,15 +38,9 @@ class LlamaModel:
         for item in response.get("anomalies", []):
             anomaly = AnomalyNotification(
                 event_type=item["event_type"],
-                description=item["description"],
-                timestamp=datetime.utcnow(),
-                evidence=item["evidence"]
+                severity=item["severity"],
+                details=item["details"],
+                timestamp=item["timestamp"],
             )
             anomalies.append(anomaly)
         return anomalies
-
-# Initialize the RAG handler
-rag_handler = RAGHandler()
-
-# Instantiate the Llama model
-llama_model = LlamaModel(rag_handler)
