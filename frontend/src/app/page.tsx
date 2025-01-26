@@ -1,15 +1,15 @@
 "use client"
-import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { 
-  AlertTriangle, 
-  Filter, 
-  Search, 
-  Bell, 
-  TrendingUp, 
-  Shield,      
-  BarChart 
+import {
+  AlertTriangle,
+  BarChart,
+  Bell,
+  Filter,
+  Search,
+  Shield,
+  TrendingUp
 } from 'lucide-react';
+import { useState } from 'react';
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 // Mock data - replace with actual API integration
 const mockNotifications = [
@@ -18,7 +18,7 @@ const mockNotifications = [
     eventType: 'Anomaly',
     description: 'Unusual traffic spike detected',
     timestamp: '2024-01-25 14:30:45',
-    evidence: 'Traffic increased by 200% in 5 minutes',
+    evidence: 'Traffic increased by 200% in 5 minutes', 
     severity: 'high'
   },
   {
@@ -108,6 +108,7 @@ const MonitoringDashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('');
 
+  console.log(setNotifications);
   // Filtering logic
   const filteredNotifications = notifications.filter(notification => 
     (filterType ? notification.eventType === filterType : true) &&
