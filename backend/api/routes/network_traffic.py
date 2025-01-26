@@ -25,8 +25,11 @@ def process_network_traffic(traffic_data: List[TrafficData]):
                 event_type=anomaly['event_type'],
                 description=anomaly['description'],
                 timestamp=datetime.utcnow(),
-                evidence=anomaly['evidence']
+                evidence=anomaly['evidence'],
+                security=anomaly['security']
             )
+            
+            # Send notification to blockchain testnet
             blockchain_notifier.send_notification(notification.dict())
             notifications.append(notification)
 

@@ -6,3 +6,4 @@ class AnomalyNotification(BaseModel):
     description: str
     timestamp: datetime
     evidence: str
+    security: str
