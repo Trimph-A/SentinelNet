@@ -1,31 +1,6 @@
 # SentinelNet
 
-SentinelNet is an AI-powered router monitoring tool that leverages the LLaMa 3:1B model and blockchain technology to detect network anomalies and notify users in real-time. It includes a Python backend for data collection, AI analysis, and blockchain notifications, as well as a React.js frontend for monitoring and visualization.
-
----
-
-## Project Structure
-```
-project-root/
-├── backend/
-│   ├── app/
-│   │   ├── data_collection.py       # Script to collect network traffic data
-│   │   ├── preprocessing.py         # Data aggregation and formatting logic
-│   │   ├── ai_analysis.py           # AI model integration and anomaly detection
-│   │   ├── blockchain_notifications.py # Blockchain notification handling
-│   ├── venv/                        # Virtual environment for Python dependencies
-│   ├── requirements.txt             # Backend dependencies
-│   ├── server.py                    # Backend server script
-├── frontend/
-│   ├── public/                      # Static assets
-│   ├── src/                         # React app source code
-│   │   ├── components/              # UI components (e.g., NotificationTable)
-│   │   ├── pages/                   # App pages
-│   │   └── App.js                   # Main React component
-│   ├── package.json                 # Frontend dependencies
-├── .gitignore                       # Git ignore file
-├── README.md                        # Project documentation
-```
+SentinelNet is an AI-powered router monitoring tool that leverages the LLaMa 3.2:1B model and blockchain technology to detect network anomalies and notify users in real-time. It includes a Python backend for data collection, AI analysis, and blockchain notifications, as well as a React.js frontend for monitoring and visualization.
 
 ---
 
@@ -48,7 +23,7 @@ project-root/
    ```
 4. Run the backend server:
    ```bash
-   python server.py
+   uvicorn api.main:app --reload
    ```
 
 ### Frontend Setup

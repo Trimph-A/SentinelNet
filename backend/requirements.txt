@@ -1,7 +1,11 @@
-scapy  # For data collection
-pandas  # For data preprocessing
-transformers  # For LLaMa model (Hugging Face)
-web3  # For blockchain integration
-flask
 fastapi
+web3
+pydantic
+pyyaml
+faiss-cpu
+openai
+transformers
+google-cloud-storage
+pandas
+datasets
 uvicorn
